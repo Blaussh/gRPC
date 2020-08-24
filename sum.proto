@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package calculator;
+
+message CalRequest {
+	int32 a = 1;
+	int32 b = 2;
+}
+
+message CalResponse {
+	string result = 1;
+}
+
+message PrimeRequest {
+	int32 number = 1;
+}
+
+message PrimeResponse {
+	int32 result = 1;
+}
+
+service CalculatorService {
+	rpc Sum (CalRequest) returns (CalResponse) {}
+	rpc Mul (CalRequest) returns (CalResponse) {}
+	rpc Prime (PrimeRequest) returns (stream PrimeResponse) {}
+} 
+
